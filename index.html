@@ -28,7 +28,7 @@
 <body>
 
 <h1>Privacy Policy — <em>Mommy a Monster!</em></h1>
-<p class="meta">Version 1.1 &middot; Effective 22 May 2026 &middot; Last updated 10 July 2026</p>
+<p class="meta">Version 1.2 &middot; Effective 22 May 2026 &middot; Last updated 10 July 2026</p>
 
 <div class="controller">
 <h2 style="margin-top:0;border:0;padding:0">Who we are</h2>
@@ -49,16 +49,16 @@ will delete it promptly.</p>
 
 <h2>2. What We Collect and Why</h2>
 
-<h3>2.1 Google Play Games identity and cloud save</h3>
+<h3>2.1 Google Play Games identity, leaderboard, and achievements</h3>
 <p>When you sign in with Google Play Games (GPGS), the app receives an
 <strong>anonymous pseudonymous player identifier</strong> assigned by Google. This identifier is
 scoped to your Google Play Games account and is not your name, email address, or any other
 directly identifying information. The app never reads your Google account name or email.</p>
-<p>We use this identifier to synchronise your game progress across devices via GPGS cloud save,
-and to submit your score to the in-game leaderboard. The cloud-save payload contains your game
-progress data (see Section 2.3). Google acts as a data processor on our behalf for this service.
-Signing in with Google Play Games is optional &mdash; if you decline, game progress is stored
-locally on your device only.</p>
+<p>We use this identifier to submit your score to the in-game leaderboard and to report your
+progress on Google Play Games achievements. Google acts as a data processor on our behalf for
+this service. Signing in with Google Play Games is optional &mdash; if you decline, you can still
+play; the leaderboard and achievements features simply are not available. Cloud save does not
+depend on GPGS sign-in; it is described exclusively in Section 2.2.</p>
 
 <h3>2.2 Firebase anonymous identity and Firestore cloud save</h3>
 <p>On first launch the app creates an <strong>anonymous Firebase account</strong>, which yields a
@@ -74,11 +74,13 @@ restore progress and sync across devices. Google acts as a data processor on our
 
 <h3>2.3 Game progress stored locally</h3>
 <p>The following game state is stored on your device (in Android app storage and a private save
-file): level progress (stars earned, highest level), currency balances (coins, diamonds, stars),
-hero and monster unlock states, boost upgrade levels, and total playtime (a relative counter used
-for save-conflict resolution). This data is held on your device and, if you use cloud save, in
-your GPGS cloud-save slot and Firestore document. It is not shared with any third party other than
-Google as the cloud-save processor.</p>
+file): level progress (stars earned, highest level), currency balances (coins, diamonds, stars,
+cookie-jar balance), hero and monster unlock states, boost upgrade levels, total playtime (a
+relative counter used for save-conflict resolution), quest and reward-pass state, achievement
+progress and unlocks, lifetime gameplay statistics, cosmetic items owned and equipped, and
+one-time purchase entitlement flags. This data is held on your device and, as described in
+Section 2.2, backed up to Cloud Firestore keyed to your anonymous Firebase identifier. It is not
+shared with any third party other than Google as the cloud-save processor.</p>
 
 <h3>2.4 In-app purchases</h3>
 <p>When you make a real-money purchase, payment is processed entirely by Google Play
@@ -136,7 +138,7 @@ Google's servers in the United States under the EU&ndash;US Data Privacy Framewo
 <table>
 <tr><th>Processing activity</th><th>Legal basis (GDPR Art. 6)</th></tr>
 <tr><td>Local game progress storage</td><td>6(1)(b) — performance of a contract (saving your progress).</td></tr>
-<tr><td>GPGS cloud save and leaderboard</td><td>6(1)(b) — performance of a contract (features you opt into).</td></tr>
+<tr><td>GPGS leaderboard and achievements</td><td>6(1)(b) — performance of a contract (features you opt into).</td></tr>
 <tr><td>Firebase anonymous identity + Firestore cloud save</td><td>6(1)(b) — performance of a contract (cloud backup and cross-device restore).</td></tr>
 <tr><td>Consent-gated analytics</td><td>6(1)(a) — your freely given, specific, informed, unambiguous consent.</td></tr>
 <tr><td>Consent-gated crash reporting</td><td>6(1)(a) — your freely given, specific, informed, unambiguous consent.</td></tr>
@@ -149,7 +151,7 @@ third-party services we use as data processors are all Google products governed 
 standard Data Processing Addendum:</p>
 <table>
 <tr><th>Processor</th><th>Purpose</th><th>Location</th><th>Transfer mechanism</th></tr>
-<tr><td>Google LLC (Google Play Games Services)</td><td>Cloud save, leaderboard, anonymous player identity</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
+<tr><td>Google LLC (Google Play Games Services)</td><td>Leaderboard, achievements, anonymous player identity</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Firebase Authentication)</td><td>Anonymous pseudonymous account identity (UID)</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Cloud Firestore)</td><td>Cloud backup/sync of game-progress save data</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Firebase Analytics)</td><td>Consent-gated gameplay analytics</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
@@ -164,7 +166,7 @@ certified under it.</p>
 <table>
 <tr><th>Data category</th><th>Retention period</th></tr>
 <tr><td>Local game progress (device storage)</td><td>Until you uninstall the app, which deletes the app's private storage.</td></tr>
-<tr><td>GPGS cloud save</td><td>Until you delete your Google Play Games account/data via Google's tools, or request deletion from us.</td></tr>
+<tr><td>GPGS achievements</td><td>Until you reset them via Google's tools or request deletion from us.</td></tr>
 <tr><td>Firebase anonymous UID + Firestore cloud save</td><td>Until you request deletion from us. Persists while the install exists so progress can be restored.</td></tr>
 <tr><td>Firebase Analytics event data</td><td>60 days (Firebase default), then individual records are deleted.</td></tr>
 <tr><td>Firebase Crashlytics crash reports</td><td>90 days (Firebase default), then deleted.</td></tr>
@@ -179,9 +181,13 @@ personal data; rectification of inaccurate data; erasure (&ldquo;right to be for
 restriction of processing; objection to processing; withdrawal of consent (for analytics and crash
 reporting, at any time via in-app Settings &mdash; withdrawal does not affect the lawfulness of
 processing before withdrawal); and data portability.</p>
-<p>For erasure: clearing your GPGS cloud save and uninstalling the app removes the local and GPGS
-copies; to delete the Firestore cloud-save copy and its anonymous Firebase UID, or to request
-deletion of analytics data, contact us at the address below.</p>
+<p>For erasure: uninstalling the app removes the local copy of your game progress. To delete the
+Firestore cloud save, your anonymous Firebase account, and the purchase-validation and
+promo-redemption records, contact us at the address below and we will run our account-deletion
+routine &mdash; the steps are described on our
+<a href="./delete.html">account &amp; data deletion page</a>. For analytics data, we will process
+a deletion request for your <code>app_instance_id</code> if you can provide it, or by deleting the
+relevant event stream.</p>
 <p>You also have the right to lodge a complaint with the Dutch data protection authority, the
 <strong>Autoriteit Persoonsgegevens (AP)</strong>, at
 <a href="https://autoriteitpersoonsgegevens.nl">autoriteitpersoonsgegevens.nl</a>.</p>

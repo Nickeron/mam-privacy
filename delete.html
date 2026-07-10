@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Account &amp; Data Deletion — Mommy a Monster!</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6; max-width: 820px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+    color: #1a1a1a; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) { body { color: #e6e6e6; background: #15171a; } a { color: #6cb6ff; } }
+  h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.3rem; margin-top: 2.2rem; border-bottom: 1px solid #ddd; padding-bottom: .3rem; }
+  .meta { color: #666; font-size: .9rem; margin-bottom: 1.5rem; }
+  ul { padding-left: 1.3rem; }
+  .box { background: rgba(127,127,127,.08); border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Account &amp; Data Deletion — <em>Mommy a Monster!</em></h1>
+<p class="meta">Developer: PirateBeer &middot; App: <em>Mommy a Monster!</em> (Android, package <code>com.piratebeer.mam</code>)</p>
+
+<p>This page explains how to request deletion of the account and data associated with your
+installation of <em>Mommy a Monster!</em>, as described in our
+<a href="./index.html">privacy policy</a>.</p>
+
+<h2>What gets deleted</h2>
+<p>The app uses an anonymous Firebase account (a random identifier not linked to your name or
+email). A deletion request removes, permanently:</p>
+<ul>
+  <li>Your cloud save (game progress stored in Cloud Firestore).</li>
+  <li>All purchase-validation records associated with your anonymous account.</li>
+  <li>All promotional-code redemption records associated with your anonymous account.</li>
+  <li>The anonymous Firebase account itself.</li>
+</ul>
+<p>Data with fixed retention that expires on its own: consent-gated analytics events
+(60 days) and consent-gated crash reports (90 days). Progress stored only on your device is
+removed by uninstalling the app. Google Play purchase history is held by Google under your
+Google account and is not ours to delete.</p>
+
+<h2>How to request deletion</h2>
+<div class="box">
+<p><strong>Email us at piratebeer2019@gmail.com</strong> with the subject line
+&ldquo;Delete my Mommy a Monster! data&rdquo;.</p>
+<p>Because your account is anonymous, we can locate it only with an identifier from your device.
+If the app is still installed, open <strong>Settings</strong> in the game and include the support
+identifier shown there; if you have uninstalled the app, tell us the approximate date and time you
+last played and your device model, and we will do our best to locate the record.</p>
+<p>We respond to verified requests within 30 days (GDPR Article 12). Deletion is performed by the
+same server-side routine regardless of how the request reaches us.</p>
+</div>
+<p>An in-app &ldquo;Delete my account&rdquo; option is shipping in an upcoming release; once
+available, it performs the same deletion immediately from the Settings menu without needing to
+email us.</p>
+
+<h2>Questions</h2>
+<p>Anything unclear? Contact <strong>piratebeer2019@gmail.com</strong>. The full description of
+what we collect and why is in the <a href="./index.html">privacy policy</a>.</p>
+
+</body>
+</html>
