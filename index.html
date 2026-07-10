@@ -28,7 +28,7 @@
 <body>
 
 <h1>Privacy Policy — <em>Mommy a Monster!</em></h1>
-<p class="meta">Version 1.0 &middot; Effective 22 May 2026 &middot; Last updated 22 May 2026</p>
+<p class="meta">Version 1.1 &middot; Effective 22 May 2026 &middot; Last updated 10 July 2026</p>
 
 <div class="controller">
 <h2 style="margin-top:0;border:0;padding:0">Who we are</h2>
@@ -81,10 +81,17 @@ your GPGS cloud-save slot and Firestore document. It is not shared with any thir
 Google as the cloud-save processor.</p>
 
 <h3>2.4 In-app purchases</h3>
-<p>When you make a real-money purchase, the transaction is processed entirely by Google Play
-Billing. We receive a receipt confirmation from Google, but we do not receive or store your
-payment card details, billing address, or any payment-method information. The purchase generates an
-analytics event as described in Section 2.5.</p>
+<p>When you make a real-money purchase, payment is processed entirely by Google Play
+Billing &mdash; we never receive or store your payment card details, billing address, or any
+payment-method information.</p>
+<p>To confirm a purchase is genuine before granting the item (fraud prevention), the app sends the
+Google Play purchase token to a Firebase Cloud Function we operate. That function verifies the
+token with the Google Play Developer API and stores a minimal validation record in Google's Cloud
+Firestore: the purchase token, your pseudonymous Firebase user ID, the product identifier, and a
+validation timestamp. This record exists solely to stop a purchase from being granted more than
+once; it contains no payment or contact information. If you redeem a promotional code, we likewise
+record that your pseudonymous Firebase user ID claimed that code, to stop the same code being
+claimed twice. The purchase also generates an analytics event as described in Section 2.5.</p>
 
 <h3>2.5 Analytics (consent-gated)</h3>
 <p>On first launch, the app shows a consent dialog. Analytics collection begins
@@ -162,6 +169,8 @@ certified under it.</p>
 <tr><td>Firebase Analytics event data</td><td>60 days (Firebase default), then individual records are deleted.</td></tr>
 <tr><td>Firebase Crashlytics crash reports</td><td>90 days (Firebase default), then deleted.</td></tr>
 <tr><td>Leaderboard score</td><td>Until the leaderboard is deleted or you request deletion from us.</td></tr>
+<tr><td>Purchase-validation records (Firestore <code>validatedPurchases</code>)</td><td>Retained until you request deletion (see Section 6); a fixed retention window is under review. Holds the purchase token, pseudonymous Firebase UID, product ID, and validation timestamp &mdash; no payment or contact data.</td></tr>
+<tr><td>Promo-code redemption records (Firestore <code>redemptions</code>)</td><td>Retained until you request deletion (see Section 6). Records that your pseudonymous Firebase UID claimed a given code, to prevent double-claims.</td></tr>
 </table>
 
 <h2>6. Your Rights Under GDPR</h2>
@@ -180,10 +189,14 @@ deletion of analytics data, contact us at the address below.</p>
 respond to verified requests within 30 days and may need to verify your identity first.</p>
 
 <h2>7. Security</h2>
-<p>We do not operate servers that store personal data directly. Game progress is stored on your
-device (under Android's private app storage, inaccessible to other apps) and in Google's cloud
-services (subject to Google's security practices). Analytics and crash data are transmitted to
-Firebase over HTTPS (TLS 1.2+). We do not transmit raw personal data over unencrypted
+<p>The only personal data we hold on servers we operate lives in Google's Cloud Firestore: your
+game-progress cloud save (Section 2.2) and the minimal purchase-validation and promo-redemption
+records described in Section 2.4. Firestore security rules restrict your cloud save so it can be
+read or written only by the anonymous Firebase account that owns it, and deny clients any direct
+access to the purchase-validation and promo-redemption records &mdash; those are written only by
+authenticated Firebase Cloud Functions we control. Game progress is also stored on your device
+(under Android's private app storage, inaccessible to other apps). All data is transmitted to
+Firebase over HTTPS (TLS 1.2+); we do not transmit raw personal data over unencrypted
 connections.</p>
 
 <h2>8. Changes to This Policy</h2>
