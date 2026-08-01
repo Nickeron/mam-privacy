@@ -28,7 +28,7 @@
 <body>
 
 <h1>Privacy Policy — <em>Mommy a Monster!</em></h1>
-<p class="meta">Version 1.2 &middot; Effective 22 May 2026 &middot; Last updated 10 July 2026</p>
+<p class="meta">Version 1.3 &middot; Effective 22 May 2026 &middot; Last updated 1 August 2026</p>
 
 <div class="controller">
 <h2 style="margin-top:0;border:0;padding:0">Who we are</h2>
@@ -114,11 +114,21 @@ product):</p>
 <p><strong>Purpose:</strong> to understand how players engage with the game so we can improve it.
 <strong>Processor:</strong> Firebase Analytics is operated by Google LLC; data is transmitted to
 and stored on Google's servers in the United States under the EU&ndash;US Data Privacy Framework.
-<strong>Retention:</strong> 60 days (the Firebase default), after which individual event records
-are deleted.</p>
+A copy of the consented analytics events is also exported once per day to <strong>Google
+BigQuery</strong>, our analytics warehouse, into a dataset located in the
+<strong>European Union</strong>. The exported data is the same pseudonymous event data described
+above; no additional data is collected by the export.
+<strong>Retention:</strong> Google Analytics retains user-level event data for
+<strong>14 months</strong>, after which individual event records are deleted from Google's
+analytics systems. The copies exported to our BigQuery warehouse are retained for up to
+<strong>24 months</strong>; exported records expire and are deleted automatically at the end of
+that window.</p>
 <p>We do <strong>not</strong> collect your name, email, phone number, or postal address; precise
-(GPS) location; advertising identifiers (we use no advertising SDK); camera, microphone, contacts,
-or calendar data; or any information from your device's files beyond the app's own save data.</p>
+(GPS) location; advertising identifiers (we use no advertising SDK); device identifiers such as
+the Android ID (the app reads the Android ID locally to derive a hashed device-binding value that
+protects your purchase wallet against cloned save data; that value is stored only on your device
+and is never transmitted to us or to anyone else); camera, microphone, contacts, or calendar
+data; or any information from your device's files beyond the app's own save data.</p>
 
 <h3>2.6 Crash reports (consent-gated)</h3>
 <p>Crash and stability reporting is provided by <strong>Firebase Crashlytics</strong> (a Google
@@ -155,6 +165,7 @@ standard Data Processing Addendum:</p>
 <tr><td>Google LLC (Firebase Authentication)</td><td>Anonymous pseudonymous account identity (UID)</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Cloud Firestore)</td><td>Cloud backup/sync of game-progress save data</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Firebase Analytics)</td><td>Consent-gated gameplay analytics</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
+<tr><td>Google LLC (BigQuery)</td><td>Analytics warehouse: daily export of the consented analytics events</td><td>European Union</td><td>Stored in the EU; no third-country transfer for the stored copies</td></tr>
 <tr><td>Google LLC (Firebase Crashlytics)</td><td>Consent-gated crash and stability reporting</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 <tr><td>Google LLC (Google Play Billing)</td><td>In-app purchase processing</td><td>United States</td><td>EU&ndash;US Data Privacy Framework</td></tr>
 </table>
@@ -168,7 +179,7 @@ certified under it.</p>
 <tr><td>Local game progress (device storage)</td><td>Until you uninstall the app, which deletes the app's private storage.</td></tr>
 <tr><td>GPGS achievements</td><td>Until you reset them via Google's tools or request deletion from us.</td></tr>
 <tr><td>Firebase anonymous UID + Firestore cloud save</td><td>Until you request deletion from us. Persists while the install exists so progress can be restored.</td></tr>
-<tr><td>Firebase Analytics event data</td><td>60 days (Firebase default), then individual records are deleted.</td></tr>
+<tr><td>Firebase Analytics event data</td><td>14 months in Google Analytics (user-level event data). Copies exported daily to our BigQuery warehouse (EU): up to 24 months, then deleted automatically.</td></tr>
 <tr><td>Firebase Crashlytics crash reports</td><td>90 days (Firebase default), then deleted.</td></tr>
 <tr><td>Leaderboard score</td><td>Until the leaderboard is deleted or you request deletion from us.</td></tr>
 <tr><td>Purchase-validation records (Firestore <code>validatedPurchases</code>)</td><td>Retained until you request deletion (see Section 6); a fixed retention window is under review. Holds the purchase token, pseudonymous Firebase UID, product ID, and validation timestamp &mdash; no payment or contact data.</td></tr>
@@ -187,7 +198,8 @@ promo-redemption records, contact us at the address below and we will run our ac
 routine &mdash; the steps are described on our
 <a href="./delete.html">account &amp; data deletion page</a>. For analytics data, we will process
 a deletion request for your <code>app_instance_id</code> if you can provide it, or by deleting the
-relevant event stream.</p>
+relevant event stream, and we will delete the rows keyed to that same identifier from our BigQuery
+warehouse.</p>
 <p>You also have the right to lodge a complaint with the Dutch data protection authority, the
 <strong>Autoriteit Persoonsgegevens (AP)</strong>, at
 <a href="https://autoriteitpersoonsgegevens.nl">autoriteitpersoonsgegevens.nl</a>.</p>
