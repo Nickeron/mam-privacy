@@ -15,6 +15,7 @@
   @media (prefers-color-scheme: dark) { body { color: #e6e6e6; background: #15171a; } a { color: #6cb6ff; } }
   h1 { font-size: 1.9rem; margin-bottom: .25rem; }
   h2 { font-size: 1.3rem; margin-top: 2.2rem; border-bottom: 1px solid #ddd; padding-bottom: .3rem; }
+  h3 { font-size: 1.05rem; margin-top: 1.4rem; }
   .meta { color: #666; font-size: .9rem; margin-bottom: 1.5rem; }
   ul { padding-left: 1.3rem; }
   .box { background: rgba(127,127,127,.08); border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0; }
@@ -23,7 +24,7 @@
 <body>
 
 <h1>Account &amp; Data Deletion — <em>Mommy a Monster!</em></h1>
-<p class="meta">Developer: PirateBeer &middot; App: <em>Mommy a Monster!</em> (Android, package <code>com.piratebeer.mam</code>)</p>
+<p class="meta">Developer: Pirate Beer Games &middot; App: <em>Mommy a Monster!</em> (Android, package <code>com.piratebeer.mam</code>)</p>
 
 <p>This page explains how to request deletion of the account and data associated with your
 installation of <em>Mommy a Monster!</em>, as described in our
@@ -31,32 +32,65 @@ installation of <em>Mommy a Monster!</em>, as described in our
 
 <h2>What gets deleted</h2>
 <p>The app uses an anonymous Firebase account (a random identifier not linked to your name or
-email). A deletion request removes, permanently:</p>
+email). A deletion request removes:</p>
 <ul>
   <li>Your cloud save (game progress stored in Cloud Firestore).</li>
   <li>All purchase-validation records associated with your anonymous account.</li>
   <li>All promotional-code redemption records associated with your anonymous account.</li>
+  <li>Your currency wallet.</li>
   <li>The anonymous Firebase account itself.</li>
 </ul>
-<p>Data with fixed retention that expires on its own: consent-gated analytics events
-(60 days) and consent-gated crash reports (90 days). Progress stored only on your device is
+<p>Deleted data can stay in the recovery history of our Cloudflare databases for up to 30 days,
+in our Cloudflare server logs for up to 7 days, and in our Google Cloud server logs for the
+retention period set for our project's logs (30 days by default). Google, which hosts our other
+databases, can keep backup copies for as long as the backup settings of those databases keep
+them. We never restore deleted data for use.</p>
+<p>Data with fixed retention that expires on its own: consent-gated analytics events and
+consent-gated crash reports. Analytics events are kept 14 months in Google Analytics (user-level
+event data). Copies exported daily to our BigQuery warehouse (EU) are kept up to 24 months, then
+deleted automatically. Crash reports are kept 90 days. Progress stored only on your device is
 removed by uninstalling the app. Google Play purchase history is held by Google under your
 Google account and is not ours to delete.</p>
+
+<h3>Social features</h3>
+<p>If you joined the social features, deleting your account also deletes your social records:</p>
+<ul>
+  <li>Your social account: all of it.</li>
+  <li>The age check at social entry: all of it.</li>
+  <li>Friends: all of it.</li>
+  <li>Your profile card: all of it.</li>
+  <li>Quick-Chat messages: all of it.</li>
+  <li>Groups and group goals: your part of it.</li>
+  <li>Gifts, rewards and notices: all of it.</li>
+  <li>Weekly challenge and league: all of it.</li>
+  <li>Reports, blocks and moderation: your part of it.</li>
+  <li>Your data requests: your part of it.</li>
+  <li>Invite codes: all of it.</li>
+</ul>
+<p>Some records stay after you delete your account, for safety and to show that we answered your
+requests:</p>
+<ul>
+  <li>Groups and group goals: A group and its weekly goal belong to all of its members, so they stay for the others. They hold no user ID; your membership, requests, invites, messages and your part in the goal are deleted.</li>
+  <li>Reports, blocks and moderation: A ban stays after you delete your account, under a coded form of your Google Play Games account ID, so a new account cannot escape it. The reports behind the ban stay with it. A record of each moderation action about you (a warning, a limit, a hide or a ban) stays as long as what it documents plus 6 months, and 2 years where it documents a notice to the police or an order; it holds your social ID, never your user ID. Your user ID is removed from reports you made. While a legal claim, an authority's order or a report to the police needs them, we keep the reports concerned, your user ID on reports you made and your warnings and limits until it ends.</li>
+  <li>Your data requests: The record that we answered your request stays for 24 months. It holds a coded form of your user ID, not the ID itself.</li>
+</ul>
+<p>Deleted records can stay in our database's recovery history for up to 30 days, and our server
+logs keep errors for up to 7 days. We never restore deleted data for use.</p>
 
 <h2>How to request deletion</h2>
 <div class="box">
 <p><strong>Email us at piratebeer2019@gmail.com</strong> with the subject line
 &ldquo;Delete my Mommy a Monster! data&rdquo;.</p>
 <p>Because your account is anonymous, we can locate it only with an identifier from your device.
-If the app is still installed, open <strong>Settings</strong> in the game and include the support
-identifier shown there; if you have uninstalled the app, tell us the approximate date and time you
-last played and your device model, and we will do our best to locate the record.</p>
-<p>We respond to verified requests within 30 days (GDPR Article 12). Deletion is performed by the
-same server-side routine regardless of how the request reaches us.</p>
+If the app is still installed, the quickest way is to delete your account in the game: open
+Settings, tap Privacy &amp; Account, then tap Delete Account. If you uninstalled it, reinstall
+it, sign in with the same Google Play Games account, then open Settings, tap Privacy &amp;
+Account, then tap Delete Account. Otherwise, email us.</p>
+<p>We answer every request within one month of receiving it. Deletion is performed by the same
+server-side routine regardless of how the request reaches us.</p>
 </div>
-<p>An in-app &ldquo;Delete my account&rdquo; option is shipping in an upcoming release; once
-available, it performs the same deletion immediately from the Settings menu without needing to
-email us.</p>
+<p>You can delete your account in the app: open Settings, tap Privacy &amp; Account, then tap
+Delete Account.</p>
 
 <h2>Questions</h2>
 <p>Anything unclear? Contact <strong>piratebeer2019@gmail.com</strong>. The full description of
